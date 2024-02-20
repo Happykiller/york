@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo
+    container_name: york
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+    volumes:
+      - './data:/data/db'
+      - './config:/data/configdb'
+    ports:
+      - 27017:27017
+
+  mongo-express:
+    image: mongo-express
+    container_name: york_web
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 8082:8081
+    environment:
+      ME_CONFIG_MONGODB_AUTH_USERNAME: ${EXPRESS_AUTH_USERNAME}
+      ME_CONFIG_MONGODB_AUTH_PASSWORD: ${EXPRESS_AUTH_PASSWORD}
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_ROOT_PASSWORD}
+      ME_CONFIG_MONGODB_URL: mongodb://root:${MONGO_ROOT_PASSWORD}@mongo:27017/
