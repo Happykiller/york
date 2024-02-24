@@ -24,7 +24,7 @@ services:
     env_file:
       - .env
     ports:
-      - 8082:8081
+      - 8084:8081
     environment:
       ME_CONFIG_MONGODB_AUTH_USERNAME: ${EXPRESS_AUTH_USERNAME}
       ME_CONFIG_MONGODB_AUTH_PASSWORD: ${EXPRESS_AUTH_PASSWORD}
