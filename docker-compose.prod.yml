@@ -1,0 +1,7 @@
+# docker-compose.prod.yml
+services:
+  mongo:
+    restart: always
+
+  mongo-express:
+    restart: always

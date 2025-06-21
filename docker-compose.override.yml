@@ -1,0 +1,9 @@
+# docker-compose.override.yml
+services:
+  mongo:
+    ports:
+      - 27017:27017
+
+  mongo-express:
+    ports:
+      - 8084:8081
